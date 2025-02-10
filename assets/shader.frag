@@ -14,15 +14,15 @@ struct transducer {
     float phase;
 };
 
-const float SIM_SPEED = 1e-5;
+const float SIM_SPEED = 5e-5;
 const float FREQ = 40e3;                // Hz
 const float WAVE_SIM_SPEED = 343;       // m/s
-const float SCALE = 10;                // 1 => screen = 2x2m   2 => screen = 4x4m
+const float SCALE = 0.1;                // 1 => screen = 2x2m   2 => screen = 4x4m
 const float WAVE_LENGTH = WAVE_SIM_SPEED / FREQ;
-const int NUM_OF_TRANSDUCERS = 70;
-const float SPACING = 0.52 * WAVE_LENGTH;
+const float AMPLITUDE = 0.001;
+const int NUM_OF_TRANSDUCERS = 5;
+const float SPACING = 0.5 * WAVE_LENGTH;
 
-float angle = 0.0;
 
 
 float get_beam_angle(vec2 pos) {
@@ -43,7 +43,7 @@ float wave_height(vec2 pos, float angle) {
   for (int i = 0; i < NUM_OF_TRANSDUCERS; i++) {
     transducer t = get_transducer(i, angle);
     float dis = length(pos - t.pos);
-    float wave = 1/pow(dis, 2) * sin(2.0*PI*(FREQ*seconds*SIM_SPEED - dis/WAVE_LENGTH) + t.phase);
+    float wave = AMPLITUDE / pow(dis, 2) * sin(2.0*PI*(FREQ*seconds*SIM_SPEED - dis/WAVE_LENGTH) + t.phase);
     height += wave;
   }
   return height;

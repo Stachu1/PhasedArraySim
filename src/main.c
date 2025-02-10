@@ -17,7 +17,7 @@ int main(void)
     const int screen_height = 500;
     const int FPS_TARGET = 30;
 
-    InitWindow(screen_width, screen_height, "Laplace");
+    InitWindow(screen_width, screen_height, "Phased Array Sim");
 
     // Load the shader
     const char *frag_shader_fn = "assets/shader.frag";
