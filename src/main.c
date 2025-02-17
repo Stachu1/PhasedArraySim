@@ -13,7 +13,7 @@ time_t GetFileModificationTime(const char *fileName);
 
 int main(void)
 {
-    const int screen_width = 500;
+    const int screen_width = 1000;
     const int screen_height = 500;
     const int FPS_TARGET = 30;
 
